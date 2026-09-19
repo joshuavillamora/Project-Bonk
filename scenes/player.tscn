@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b8ahd5u8rh4il"]
 
 [ext_resource type="Texture2D" uid="uid://b6x8ri36hkcwe" path="res://assets/sprites/characters.png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://duxr0k31swvhn" path="res://scripts/Player.cs" id="1_g2els"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("1_3vyb7")
@@ -20,7 +21,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqvlu"]
 size = Vector2(7, 18)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=356054845]
+[node name="Player" type="CharacterBody2D" unique_id=356054845]
+script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=67193827]
 position = Vector2(0, -12)
