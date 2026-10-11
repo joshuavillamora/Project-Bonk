@@ -5,10 +5,12 @@ public partial class Player : CharacterBody2D
 {
 	public const float Speed = 300.0f;
 	public const float JumpVelocity = -400.0f;
-
+	private AnimatedSprite2D animatedSprite;
+	
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
+		animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 
 		// Add the gravity.
 		if (!IsOnFloor())
@@ -28,6 +30,7 @@ public partial class Player : CharacterBody2D
 
 		if (direction != 0)
 		{
+			animatedSprite.FlipH = direction < 0;
 			velocity.X = direction * Speed;
 		}
 		else
