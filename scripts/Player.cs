@@ -27,18 +27,27 @@ public partial class Player : CharacterBody2D
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
 		float direction = Input.GetAxis("move_left", "move_right");
+		Vector2 dir = new Vector2(direction, 0);
 
-		if (direction != 0)
+		Velocity = velocity;
+		Walk(dir);
+		MoveAndSlide();
+	}
+
+	private void Walk(Vector2 dir)
+	{
+		Vector2 velocity = Velocity;
+
+		if (dir.X != 0)
 		{
-			animatedSprite.FlipH = direction < 0;
-			velocity.X = direction * Speed;
+			animatedSprite.FlipH = dir.X < 0;
+			velocity.X = dir.X * Speed;
 		}
 		else
 		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+			velocity.X = Mathf.MoveToward(velocity.X, 0, Speed);
 		}
 
 		Velocity = velocity;
-		MoveAndSlide();
 	}
 }
