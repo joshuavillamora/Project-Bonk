@@ -3,8 +3,10 @@ using System;
 
 public partial class Player : CharacterBody2D
 {
-	public const float Speed = 300.0f;
-	public const float JumpVelocity = -400.0f;
+	public const float Speed = 200.0f;
+	public const float Acceleration = 1000.0f;
+	public const float Deceleration = 1500.0f;
+	public const float JumpVelocity = -250.0f;
 	private AnimatedSprite2D animatedSprite;
 	
 	public override void _PhysicsProcess(double delta)
@@ -30,22 +32,22 @@ public partial class Player : CharacterBody2D
 		Vector2 dir = new Vector2(direction, 0);
 
 		Velocity = velocity;
-		Walk(dir);
+		Walk(dir, (float)delta);
 		MoveAndSlide();
 	}
 
-	private void Walk(Vector2 dir)
+	private void Walk(Vector2 dir, float delta)
 	{
 		Vector2 velocity = Velocity;
 
 		if (dir.X != 0)
 		{
 			animatedSprite.FlipH = dir.X < 0;
-			velocity.X = dir.X * Speed;
+			velocity.X = Mathf.MoveToward(velocity.X, dir.X * Speed, Acceleration * delta);
 		}
 		else
 		{
-			velocity.X = Mathf.MoveToward(velocity.X, 0, Speed);
+			velocity.X = Mathf.MoveToward(velocity.X, 0, Deceleration * delta);
 		}
 
 		Velocity = velocity;
