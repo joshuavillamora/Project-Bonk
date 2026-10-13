@@ -7,6 +7,7 @@ public partial class Player : CharacterBody2D
 	public const float Acceleration = 1000.0f;
 	public const float Deceleration = 1500.0f;
 	public const float JumpVelocity = -250.0f;
+	public const float JumpCutMultiplier = 0.5f;
 	private AnimatedSprite2D animatedSprite;
 	
 	public override void _PhysicsProcess(double delta)
@@ -55,6 +56,10 @@ public partial class Player : CharacterBody2D
 		if (Input.IsActionJustPressed("jump") && IsOnFloor())
 		{
 			Velocity = new Vector2(Velocity.X, JumpVelocity);
+		}
+		if (Input.IsActionJustReleased("jump") && Velocity.Y < 0)
+		{
+			Velocity = new Vector2(Velocity.X, Velocity.Y * JumpCutMultiplier);
 		}
 	}
 }
