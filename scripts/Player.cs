@@ -40,11 +40,11 @@ public partial class Player : CharacterBody2D
 		if (dir.X != 0)
 		{
 			animatedSprite.FlipH = dir.X < 0;
-			velocity.X = dir.X * Speed;
+			velocity.X = Mathf.MoveToward(velocity.X, dir.X * Speed, Acceleration * delta);
 		}
 		else
 		{
-			velocity.X = Mathf.MoveToward(velocity.X, 0, Speed);
+			velocity.X = Mathf.MoveToward(velocity.X, 0, Deceleration * delta);
 		}
 
 		Velocity = velocity;
