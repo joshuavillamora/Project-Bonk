@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://u71p4x0tl1h3"]
+
+[ext_resource type="Texture2D" uid="uid://bxqtaa1a61ewu" path="res://assets/sprites/banaba_idle.png" id="1_1yv3s"]
+[ext_resource type="PackedScene" uid="uid://dbgutwkhfl3iy" path="res://scenes/killzone.tscn" id="2_nutj5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_md0e3"]
+atlas = ExtResource("1_1yv3s")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ra3w"]
+atlas = ExtResource("1_1yv3s")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uy6h"]
+atlas = ExtResource("1_1yv3s")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4w8v"]
+atlas = ExtResource("1_1yv3s")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kqvlu"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_md0e3")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_4ra3w")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_5uy6h")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_c4w8v")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o35t5"]
+size = Vector2(23, 15)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_37n2d"]
+
+[node name="Chicken" type="Node2D" unique_id=658797858]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=861647781]
+position = Vector2(0, -32)
+sprite_frames = SubResource("SpriteFrames_kqvlu")
+frame_progress = 0.95751166
+
+[node name="Killzone" parent="." unique_id=848112933 instance=ExtResource("2_nutj5")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=742742974]
+position = Vector2(0, -20)
+shape = SubResource("RectangleShape2D_o35t5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1100535666]
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_37n2d")
