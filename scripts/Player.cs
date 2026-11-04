@@ -3,11 +3,11 @@ using System;
 
 public partial class Player : CharacterBody2D
 {
-	public const float Speed = 200.0f;
+	public const float Speed = 300.0f;
 	public const float Acceleration = 1000.0f;
 	public const float Deceleration = 1500.0f;
-	public const float JumpVelocity = -250.0f;
-	public const float JumpCutMultiplier = 0.5f;
+	public const float JumpVelocity = -400.0f;
+	public const float JumpCutMultiplier = 0.2f;
 	private AnimatedSprite2D animatedSprite;
 	
 	public override void _PhysicsProcess(double delta)
