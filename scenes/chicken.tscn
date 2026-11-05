@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://u71p4x0tl1h3"]
 
 [ext_resource type="Texture2D" uid="uid://bxqtaa1a61ewu" path="res://assets/sprites/banaba_idle.png" id="1_1yv3s"]
+[ext_resource type="Script" uid="uid://dtqkt5vcc3ym" path="res://scripts/Chicken.cs" id="1_nutj5"]
 [ext_resource type="PackedScene" uid="uid://dbgutwkhfl3iy" path="res://scenes/killzone.tscn" id="2_nutj5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_md0e3"]
@@ -42,9 +43,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o35t5"]
 size = Vector2(23, 15)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_37n2d"]
-
 [node name="Chicken" type="Node2D" unique_id=658797858]
+script = ExtResource("1_nutj5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=861647781]
 position = Vector2(0, -32)
@@ -57,6 +57,10 @@ frame_progress = 0.95751166
 position = Vector2(0, -20)
 shape = SubResource("RectangleShape2D_o35t5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1100535666]
-position = Vector2(0, -15)
-shape = SubResource("CapsuleShape2D_37n2d")
+[node name="RayCastRight" type="RayCast2D" parent="." unique_id=1135085541]
+position = Vector2(0, -20)
+target_position = Vector2(22, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="." unique_id=2110917917]
+position = Vector2(0, -20)
+target_position = Vector2(-22, 0)
