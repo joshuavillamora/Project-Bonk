@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dljyvurocd5ty"]
+
+[ext_resource type="Script" uid="uid://lxner6m60vaa" path="res://scripts/Dash.cs" id="1_avqmg"]
+
+[node name="Dash" type="Node2D" unique_id=1717719272]
+script = ExtResource("1_avqmg")
+
+[node name="DashTimer" type="Timer" parent="." unique_id=798720477]

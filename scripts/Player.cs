@@ -3,22 +3,37 @@ using System;
 
 public partial class Player : CharacterBody2D
 {
-	public const float Speed = 300.0f;
+	public const float NormalSpeed = 300.0f;
 	public const float Acceleration = 1000.0f;
 	public const float Deceleration = 1500.0f;
 	public const float JumpVelocity = -400.0f;
 	public const float JumpCutMultiplier = 0.2f;
+	public const float DashSpeed = 2400.0f;
+	public const float DashLength = 1.0f;
+	public float Speed = NormalSpeed;
 	private AnimatedSprite2D animatedSprite;
+	private Dash dash;
 	
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
 		animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		dash = GetNode<Dash>("Dash");
 
 		// Add the gravity.
 		if (!IsOnFloor())
 		{
 			velocity += GetGravity() * (float)delta;
+		}
+		
+		if (Input.IsActionJustPressed("dash")) {
+			dash.StartDash(DashLength);
+		}
+		
+		if (dash.IsDashing()) {
+			Speed = DashSpeed;
+		} else {
+			Speed = NormalSpeed;
 		}
 
 		// Handle Jump.

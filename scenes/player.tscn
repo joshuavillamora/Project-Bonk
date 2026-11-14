@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b6x8ri36hkcwe" path="res://assets/sprites/characters.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://duxr0k31swvhn" path="res://scripts/Player.cs" id="1_g2els"]
+[ext_resource type="PackedScene" uid="uid://dljyvurocd5ty" path="res://scenes/dash.tscn" id="3_qhqgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("1_3vyb7")
@@ -31,3 +32,5 @@ sprite_frames = SubResource("SpriteFrames_kqvlu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=156405588]
 position = Vector2(-0.5, -9)
 shape = SubResource("RectangleShape2D_kqvlu")
+
+[node name="Dash" parent="." unique_id=1717719272 instance=ExtResource("3_qhqgy")]
