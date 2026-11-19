@@ -8,6 +8,18 @@
 atlas = ExtResource("1_3vyb7")
 region = Rect2(0, 32, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(96, 32, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_kqvlu"]
 animations = [{
 "frames": [{
@@ -15,8 +27,22 @@ animations = [{
 "texture": SubResource("AtlasTexture_g2els")
 }],
 "loop": 1,
-"name": &"default",
+"name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_qhqgy")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_dqkch")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_qlg0r")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 15.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqvlu"]
@@ -28,6 +54,8 @@ script = ExtResource("1_g2els")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=67193827]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_kqvlu")
+animation = &"walk"
+frame_progress = 0.21588238
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=156405588]
 position = Vector2(-0.5, -9)

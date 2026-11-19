@@ -56,6 +56,14 @@ public partial class Player : CharacterBody2D {
 			velocity.X = Mathf.MoveToward(velocity.X, 0, Deceleration * delta);
 		}
 
+		if (IsOnFloor()) {
+			if (dir.X != 0) {
+				animatedSprite.Play("walkd");
+			} else {
+				animatedSprite.Play("idle");
+			}
+		}
+
 		Velocity = velocity;
 	}
 
